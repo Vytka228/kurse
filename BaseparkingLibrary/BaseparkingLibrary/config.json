@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "SQLConnection": "Server=DESKTOP-MB2G8AB\SQLEXPRESS;Database=Baseparking;Trusted_Connection=True;"
+  }
+}
