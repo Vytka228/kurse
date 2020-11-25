@@ -1,0 +1,59 @@
+﻿@model WebApp.Models.ParkingUpdateViewModel
+<h3>
+    Изменение записи
+</h3>
+@using (Html.BeginForm("UpdateParking", "Parking", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.Id)
+        <div class="col-md-10">
+            <select name="Id">
+                @foreach (var id in Model.IdList)
+                {
+                    <option>@id</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.TypeParking)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.TypeParking)
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Dateentry)
+        <div class="col-md-10">
+            <input type="date" id="datepicker" name="Dateentry" min="2000-01-01" max="2022-01-01" />
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Datedeparture)
+        <div class="col-md-10">
+            <input type="date" id="datepicker" name="Datedeparture" min="2000-01-01" max="2022-01-01" />
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.CarsNumber)
+        <div class="col-md-10">
+            <select name="CarsNumber">
+                @foreach (var number in Model.CarsNumbers)
+                {
+                    <option>@number</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Price)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Price)
+        </div>
+    </div>
+    <div>
+        <div>
+            <input type="submit" class="btn btn-default" value="Изменить" />
+        </div>
+    </div>
+}
+

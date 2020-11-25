@@ -1,0 +1,25 @@
+﻿@model WebApp.Models.OwnerAddViewModel
+<h3>
+    Добавление записи
+</h3>
+<hr />
+@using (Html.BeginForm("AddOwner", "Owner", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.Fio)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Fio)
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.NameFone)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.NameFone)
+        </div>
+    </div>
+    <div>
+        <div>
+            <input type="submit" class="btn btn-default" value="Добавить" />
+        </div>
+    </div>
+}

@@ -1,0 +1,47 @@
+﻿@model WebApp.Models.CarUpdateViewModel
+<h3>
+    Изменение записи
+</h3>
+@using (Html.BeginForm("UpdateCar", "Car", FormMethod.Post))
+{
+    <div>
+        @Html.LabelFor(m => m.Id)
+        <div class="col-md-10">
+            <select name="Id">
+                @foreach (var id in Model.IdList)
+                {
+                    <option>@id</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Carbrands)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Carbrands)
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.Numberofthecar)
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => m.Numberofthecar)
+        </div>
+    </div>
+    <div>
+        @Html.LabelFor(m => m.OwnersFIO)
+        <div class="col-md-10">
+            <select name="OwnersFIO">
+                @foreach (var name in Model.OwnerFIOs)
+                {
+                    <option>@name</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div>
+        <div>
+            <input type="submit" class="btn btn-default" value="Изменить" />
+        </div>
+    </div>
+}
+

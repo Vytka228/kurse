@@ -1,5 +1,0 @@
-{
-  "ConnectionStrings": {
-    "SQLConnection": "Server=ASUS-PC\\SQLEXPRESS;Database=Baseparking;Trusted_Connection=True;"
-  }
-}

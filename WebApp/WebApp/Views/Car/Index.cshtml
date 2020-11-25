@@ -1,0 +1,91 @@
+﻿@model WebApp.Models.CarIndexViewModel
+@{
+    ViewBag.Title = "Таблица автомобилей";
+}
+
+<H1>@ViewBag.Title:</H1>
+<form method="get">
+    <div>
+        <label class="control-label">Номер автомобиля:&nbsp;</label>
+        <input name="number" class="form-control" />
+    </div>
+    <div>
+        <label class="control-label">Владелец:&nbsp;</label>
+        <select name="owner" class="form-control">
+            @foreach (var elem in Model.OwnerFIOs)
+            {
+                <option>@elem</option>
+            }
+        </select>
+    </div>
+    <br />
+    <div>
+        <input type="submit" style="border-color:black;" value="Фильтр" class="btn btn-default" />
+    </div>
+</form>
+<br />
+<div>
+    <table border="1">
+        <thead>
+            <tr>
+                <td>
+                    Id
+                </td>
+                <td>
+                    Марка автомобиля
+                </td>
+                <td>
+                    Номер автомобиля
+                </td>
+                <td>
+                    ФИО владельца
+                </td>
+            </tr>
+        </thead>
+        @foreach (var elem in Model.Cars)
+        {
+            <tr>
+                <td>
+                    @elem.Id
+                </td>
+                <td>
+                    @elem.Carbrands
+                </td>
+                <td>
+                    @elem.Numberofthecar
+                </td>
+                <td>
+                    @elem.OwnersFIO
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+<br />
+@if (Model.PageViewModel.HasPreviousPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber - 1)"
+       class="btn btn-outline-dark">
+        <i class="glyphicon glyphicon-chevron-left"></i>
+        Назад
+    </a>
+}
+@if (Model.PageViewModel.HasNextPage)
+{
+    <a asp-action="Index"
+       asp-route-page="@(Model.PageViewModel.PageNumber + 1)"
+       class="btn btn-outline-dark">
+        Вперед
+        <i class="glyphicon glyphicon-chevron-right"></i>
+    </a>
+}
+<br />
+@if (User.IsInRole("Администратор") || User.IsInRole("Работник"))
+{
+    <div>
+        <input type="submit" value="Добавить запись" asp-controller="Car" asp-action="AddCar" />
+        <input type="submit" value="Удалить запись" asp-controller="Car" asp-action="DeleteCar" />
+        <input type="submit" value="Изменить запись" asp-controller="Car" asp-action="UpdateCar" />
+    </div>
+}
